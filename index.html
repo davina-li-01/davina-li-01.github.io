@@ -6,174 +6,279 @@
   <title>Davina Li</title>
 
   <style>
-    /* Reset */
+    /* ---------- RESET ---------- */
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     body {
-      margin: 0;
       min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      color: white;
-      overflow-x: hidden;
-      background: #05070a;
+      background: radial-gradient(circle at top left, #0a1aff, #000 45%),
+                  radial-gradient(circle at bottom right, #001133, #000 50%);
+      background-blend-mode: screen;
+      color: #fff;
     }
 
-    /* Aura background */
-    body::before,
-    body::after {
-      content: "";
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ---------- NAV ---------- */
+    nav {
       position: fixed;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      filter: blur(140px);
-      opacity: 0.6;
-      z-index: -1;
+      top: 0;
+      width: 100%;
+      backdrop-filter: blur(18px);
+      background: rgba(0, 0, 0, 0.4);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 1000;
     }
 
-    body::before {
-      top: -200px;
-      left: -200px;
-      background: radial-gradient(circle, #3b82f6, transparent 70%);
-    }
-
-    body::after {
-      bottom: -200px;
-      right: -200px;
-      background: radial-gradient(circle, #0ea5e9, transparent 70%);
-    }
-
-    /* Page wrapper */
-    .page {
-      padding: 80px 40px;
+    .nav-container {
       max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* Widget container */
-    .widgets {
+      margin: auto;
+      padding: 1rem 1.5rem;
       display: flex;
-      gap: 28px;
-      margin-bottom: 80px;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    /* Glass widgets */
-    .widget {
-      flex: 1;
-      padding: 30px;
-      border-radius: 20px;
-
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(24px) saturate(160%);
-      -webkit-backdrop-filter: blur(24px) saturate(160%);
-
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.55),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
-
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .widget:hover {
-      transform: translateY(-8px);
-      box-shadow:
-        0 30px 70px rgba(0, 0, 0, 0.7),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    }
-
-    .widget h3 {
-      margin-top: 0;
-      margin-bottom: 14px;
-      font-size: 1.3rem;
+    .nav-logo {
       font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
-    .widget p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      opacity: 0.95;
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
     }
 
-    /* Projects section */
-    .projects {
-      padding: 40px;
-      border-radius: 24px;
-
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(22px) saturate(150%);
-      -webkit-backdrop-filter: blur(22px) saturate(150%);
-
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
     }
 
-    .projects h2 {
-      margin-top: 0;
-      margin-bottom: 16px;
-      font-size: 1.6rem;
-      font-weight: 600;
+    .burger span {
+      width: 25px;
+      height: 2px;
+      background: white;
     }
 
-    .projects p {
-      opacity: 0.85;
-      font-size: 0.95rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .widgets {
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 64px;
+        right: 0;
         flex-direction: column;
+        background: rgba(0,0,0,0.85);
+        backdrop-filter: blur(16px);
+        width: 100%;
+        padding: 1rem;
+        display: none;
       }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .burger {
+        display: flex;
+      }
+    }
+
+    /* ---------- LAYOUT ---------- */
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 7rem 1.5rem 4rem;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    p.subtitle {
+      color: #cfd3ff;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+
+    /* ---------- GLASS CARDS ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .card span {
+      font-size: 0.9rem;
+      color: #aab0ff;
+    }
+
+    .card ul {
+      margin-top: 0.75rem;
+      padding-left: 1rem;
+      line-height: 1.5;
+    }
+
+    .card ul li {
+      margin-bottom: 0.4rem;
+    }
+
+    footer {
+      text-align: center;
+      opacity: 0.6;
+      font-size: 0.9rem;
+      margin-top: 4rem;
     }
   </style>
 </head>
 
 <body>
-  <div class="page">
 
-    <div class="widgets">
-      <section class="widget">
-        <h3>Who I Am</h3>
-        <p>
-          Hi, my name is Davina Li, and I am a junior at Babson College studying
-          Technology Entrepreneurship and Data Analytics. I am interested in
-          building data-driven solutions that make customer experiences frictionless.
-        </p>
-      </section>
-
-      <section class="widget">
-        <h3>What I Do</h3>
-        <p>
-          I work as a Product Operations Associate (Customer Experience) at Turno,
-          turning customer feedback into actionable insights. I lead Voice of the
-          Customer initiatives and build tools such as Productboard to bridge
-          Customer Success, Experience, and Product.
-        </p>
-      </section>
-
-      <section class="widget">
-        <h3>What I'm Learning</h3>
-        <p>
-          I’m continuing to build my product knowledge while simultaneously becoming
-          more technical, with a focus on understanding how products are built and
-          how data drives decisions.
-        </p>
-      </section>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">Davina Li</div>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+      </div>
+      <div class="burger" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </div>
     </div>
+  </nav>
 
-    <section class="projects">
-      <h2>My Projects</h2>
-      <p>
-        Coming soon — product, data, and customer-focused projects I’ve worked on
-        or am currently building.
+  <main>
+
+    <!-- HERO -->
+    <section id="about">
+      <h1>Hi, I’m Davina 👋</h1>
+      <p class="subtitle">
+        Product Operations & Customer Experience professional with a background in
+        technology entrepreneurship, UX research, and brand building.
+        I love turning customer insight into scalable systems — and making things
+        feel good while doing it.
       </p>
     </section>
 
-  </div>
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2>Experience</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Product Operations Associate</h3>
+          <span>Turno · 2026 – Present</span>
+          <ul>
+            <li>Led customer research uncovering 7 UX issues and 5 feature gaps</li>
+            <li>Partnered cross-functionally with Product, UX, Growth, and Data</li>
+            <li>Supported international expansion via workflow and timeline reporting</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Founder</h3>
+          <span>blankfilmhi · 2021 – Present</span>
+          <ul>
+            <li>Built and scaled a hand-drawn sticker brand to 10K+ units sold</li>
+            <li>Wholesale partnerships with 17 retailers across Hawaii</li>
+            <li>Generated $20K+ revenue and grew social reach to 200K+/month</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Marketing & Brand Manager</h3>
+          <span>Healthy Steps Hawaii · 2024 – 2025</span>
+          <ul>
+            <li>Increased website traffic by 42% through rebrand execution</li>
+            <li>Achieved 7K+ monthly Instagram impressions</li>
+            <li>Produced and marketed a 500+ attendee community event</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Digital Content Creator</h3>
+          <span>doordavs · Freelance</span>
+          <ul>
+            <li>Grew TikTok following to 1K+ with branded content</li>
+            <li>Produced lifestyle, fashion, and cooking media</li>
+            <li>Worked directly with brands on storytelling and campaigns</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <h2>Education</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Babson College</h3>
+          <span>B.S. Technology Entrepreneurship</span>
+          <ul>
+            <li>Founder & President — Babson Hawaii Student Association</li>
+            <li>VP of Marketing — BAPSA</li>
+            <li>VP of Brand Management — Delta Sigma Pi</li>
+            <li>#1 School for Entrepreneurship (US News)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <p class="subtitle">
+        Coming soon — product case studies, brand systems, and experiments.
+      </p>
+    </section>
+
+    <footer>
+      © 2026 Davina Li
+    </footer>
+
+  </main>
+
+  <script>
+    function toggleNav() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+  </script>
+
 </body>
 </html>
