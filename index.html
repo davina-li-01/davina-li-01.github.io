@@ -6,7 +6,6 @@
   <title>Davina Li</title>
 
   <style>
-    /* ---------- RESET ---------- */
     * {
       margin: 0;
       padding: 0;
@@ -27,7 +26,6 @@
       text-decoration: none;
     }
 
-    /* ---------- NAV ---------- */
     nav {
       position: fixed;
       top: 0;
@@ -45,11 +43,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    .nav-logo {
-      font-weight: 600;
-      letter-spacing: 0.5px;
     }
 
     .nav-links {
@@ -92,7 +85,6 @@
       }
     }
 
-    /* ---------- LAYOUT ---------- */
     main {
       max-width: 1200px;
       margin: auto;
@@ -115,11 +107,10 @@
 
     p.subtitle {
       color: #cfd3ff;
-      max-width: 700px;
+      max-width: 800px;
       line-height: 1.6;
     }
 
-    /* ---------- GLASS CARDS ---------- */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -133,6 +124,12 @@
       border-radius: 16px;
       padding: 1.5rem;
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
     }
 
     .card h3 {
@@ -151,10 +148,6 @@
       line-height: 1.5;
     }
 
-    .card ul li {
-      margin-bottom: 0.4rem;
-    }
-
     footer {
       text-align: center;
       opacity: 0.6;
@@ -166,119 +159,128 @@
 
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-container">
-      <div class="nav-logo">Davina Li</div>
-      <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#projects">Projects</a>
+<nav>
+  <div class="nav-container">
+    <div class="nav-logo">Davina Li</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About Me</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+    </div>
+    <div class="burger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h1>Hi, I’m Davina 👋</h1>
+    <p class="subtitle">
+      Pursuing a Bachelor of Science in Business Administration with a concentration
+      in Technology Entrepreneurship, with a strong foundation in product management
+      and digital content creation. Currently contributing as a Product Operations
+      Associate at Turno, leveraging analytical thinking and customer insight to
+      support innovative projects and drive actionable outcomes.
+      <br><br>
+      Alongside my academic and product work, I operate a digital content brand and
+      collaborate with diverse companies, combining creativity with strategic
+      alignment to marketing goals. I’m motivated to integrate data-driven
+      decision-making with entrepreneurial initiatives to build meaningful,
+      well-designed solutions.
+    </p>
+
+    <div class="grid" style="margin-top:2rem;">
+      <div class="card">
+        <h3>Background</h3>
+        <p>
+          Raised in Hawaii with a passion for entrepreneurship, creativity, and
+          community-driven work. My experiences span startups, product operations,
+          brand building, and leadership across student organizations.
+        </p>
       </div>
-      <div class="burger" onclick="toggleNav()">
-        <span></span><span></span><span></span>
+
+      <div class="card">
+        <h3>What I’m Working On</h3>
+        <p>
+          Exploring product discovery, UX research, and operational workflows while
+          supporting customer experience initiatives at Turno. Actively building
+          skills in analytics, experimentation, and product prototyping.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Skills & Interests</h3>
+        <p>
+          Product thinking, customer research, SQL fundamentals, content strategy,
+          UI/UX, brand storytelling, and early-stage startup operations.
+        </p>
       </div>
     </div>
-  </nav>
+  </section>
 
-  <main>
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2>Education</h2>
 
-    <!-- HERO -->
-    <section id="about">
-      <h1>Hi, I’m Davina 👋</h1>
-      <p class="subtitle">
-        Product Operations & Customer Experience professional with a background in
-        technology entrepreneurship, UX research, and brand building.
-        I love turning customer insight into scalable systems — and making things
-        feel good while doing it.
-      </p>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience">
-      <h2>Experience</h2>
-
-      <div class="grid">
-        <div class="card">
-          <h3>Product Operations Associate</h3>
-          <span>Turno · 2026 – Present</span>
-          <ul>
-            <li>Led customer research uncovering 7 UX issues and 5 feature gaps</li>
-            <li>Partnered cross-functionally with Product, UX, Growth, and Data</li>
-            <li>Supported international expansion via workflow and timeline reporting</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Founder</h3>
-          <span>blankfilmhi · 2021 – Present</span>
-          <ul>
-            <li>Built and scaled a hand-drawn sticker brand to 10K+ units sold</li>
-            <li>Wholesale partnerships with 17 retailers across Hawaii</li>
-            <li>Generated $20K+ revenue and grew social reach to 200K+/month</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Marketing & Brand Manager</h3>
-          <span>Healthy Steps Hawaii · 2024 – 2025</span>
-          <ul>
-            <li>Increased website traffic by 42% through rebrand execution</li>
-            <li>Achieved 7K+ monthly Instagram impressions</li>
-            <li>Produced and marketed a 500+ attendee community event</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Digital Content Creator</h3>
-          <span>doordavs · Freelance</span>
-          <ul>
-            <li>Grew TikTok following to 1K+ with branded content</li>
-            <li>Produced lifestyle, fashion, and cooking media</li>
-            <li>Worked directly with brands on storytelling and campaigns</li>
-          </ul>
-        </div>
+    <div class="grid">
+      <div class="card">
+        <h3>Babson College</h3>
+        <span>B.S. Business Administration — Technology Entrepreneurship<br>
+          Planned Graduation: May 2027
+        </span>
+        <ul>
+          <li>Founder & President — Babson Hawaii Student Association</li>
+          <li>VP of Marketing — Babson Asian Pacific Student Association</li>
+          <li>VP of Brand Management — Delta Sigma Pi</li>
+          <li>#1 School for Entrepreneurship (U.S. News)</li>
+        </ul>
       </div>
-    </section>
 
-    <!-- EDUCATION -->
-    <section id="education">
-      <h2>Education</h2>
-
-      <div class="grid">
-        <div class="card">
-          <h3>Babson College</h3>
-          <span>B.S. Technology Entrepreneurship</span>
-          <ul>
-            <li>Founder & President — Babson Hawaii Student Association</li>
-            <li>VP of Marketing — BAPSA</li>
-            <li>VP of Brand Management — Delta Sigma Pi</li>
-            <li>#1 School for Entrepreneurship (US News)</li>
-          </ul>
-        </div>
+      <div class="card">
+        <h3>Punahou School</h3>
+        <span>Graduated: May 2023</span>
+        <ul>
+          <li>President — Entrepreneurship Club</li>
+          <li>Varsity Basketball</li>
+          <li>E-Sports Club</li>
+          <li><strong>AP Courses:</strong> Calculus AB, Statistics, Psychology, Biology</li>
+        </ul>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <p class="subtitle">
-        Coming soon — product case studies, brand systems, and experiments.
-      </p>
-    </section>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
 
-    <footer>
-      © 2026 Davina Li
-    </footer>
+    <div class="grid">
+      <a href="#" class="card">
+        <h3>AI Buildathon Project</h3>
+        <span>Product Prototyping · AI · UI/UX</span>
+        <p style="margin-top:0.75rem;">
+          Collaborated with a diverse team in a 10-hour AI buildathon to brainstorm,
+          design, and prototype an AI-powered application. This experience pushed me
+          outside my comfort zone and strengthened my skills in product prototyping,
+          AI technologies, and UI/UX design while working under rapid timelines.
+        </p>
+      </a>
+    </div>
+  </section>
 
-  </main>
+  <footer>
+    © 2026 Davina Li
+  </footer>
 
-  <script>
-    function toggleNav() {
-      document.getElementById("navLinks").classList.toggle("active");
-    }
-  </script>
+</main>
+
+<script>
+  function toggleNav() {
+    document.getElementById("navLinks").classList.toggle("active");
+  }
+</script>
 
 </body>
 </html>
