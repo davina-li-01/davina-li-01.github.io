@@ -296,3 +296,29 @@ body {
     height: 72px;
   }
 }
+/* FORCE DESKTOP GRID STRUCTURE */
+@media (min-width: 1024px) {
+  .profile-card {
+    grid-column: 1 / span 4;
+  }
+
+  .about-card {
+    grid-column: 5 / span 3;
+  }
+
+  .what-i-do {
+    grid-column: 1 / span 4;
+  }
+
+  .widgets {
+    grid-column: 5 / span 5;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .experience,
+  .projects {
+    grid-column: 1 / -1;
+  }
+}
