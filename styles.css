@@ -39,51 +39,48 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background: var(--bg);
   color: var(--text);
-  padding: 64px 48px;
+  padding: clamp(24px, 4vw, 64px);
 }
 
 /* =========================
-   PAGE / DESKTOP CANVAS
+   PAGE — CENTERED DESKTOP LAYOUT
    ========================= */
 .page {
-  max-width: 1240px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;          /* controls desktop width */
+  margin: 0 auto;             /* centers layout */
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 40px;
-}
-
-/* Large desktop */
-@media (min-width: 1440px) {
-  .page {
-    max-width: 1320px;
-  }
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(24px, 3vw, 48px);
 }
 
 /* =========================
-   ABOUT SECTION
+   LEFT COLUMN (PROFILE / ABOUT)
    ========================= */
 .about {
+  grid-column: span 4;
   background: var(--card);
   border: 2px solid var(--border);
   border-radius: 20px;
   padding: 24px;
 }
 
-.section-title {
-  font-size: 14px;
-  margin-bottom: 12px;
-  opacity: 0.7;
+/* =========================
+   RIGHT COLUMN (DASHBOARD / WIDGETS)
+   ========================= */
+.widgets {
+  grid-column: span 8;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(20px, 2.5vw, 32px);
+  align-items: stretch;
 }
 
 /* =========================
-   WIDGET GRID
+   FULL-WIDTH SECTIONS
    ========================= */
-.widgets {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
-  align-items: start;
+.full-width {
+  grid-column: 1 / -1;
 }
 
 /* =========================
@@ -95,6 +92,7 @@ body {
   border-radius: 24px;
   padding: 20px;
   position: relative;
+  height: 100%;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -106,10 +104,6 @@ body {
 /* =========================
    HERO
    ========================= */
-.hero {
-  grid-column: span 1;
-}
-
 .hero-content {
   display: flex;
   gap: 16px;
@@ -124,17 +118,17 @@ body {
 }
 
 .hero h1 {
-  font-size: 28px;
+  font-size: clamp(22px, 2.2vw, 28px);
   margin-bottom: 8px;
 }
 
 .hero p {
-  font-size: 15px;
+  font-size: clamp(14px, 1.1vw, 15px);
   line-height: 1.4;
 }
 
 /* =========================
-   PINNED BADGE
+   BADGE
    ========================= */
 .badge {
   position: absolute;
@@ -196,11 +190,14 @@ body {
 }
 
 /* =========================
-   NOW PLAYING (lowercase intentional)
+   NOW PLAYING
    ========================= */
 .now-playing {
-  background: var(--matcha);
-  color: #1f2a1f;
+  background: linear-gradient(
+    135deg,
+    rgba(155, 180, 138, 0.65),
+    rgba(155, 180, 138, 0.45)
+  );
 }
 
 .now-playing .label {
@@ -224,101 +221,48 @@ body {
   height: 14px;
   background: #2f3d2f;
   border-radius: 2px;
+  animation: pulse 1.2s ease-in-out infinite alternate;
+}
+
+.equalizer span:nth-child(2) { animation-delay: 0.2s; }
+.equalizer span:nth-child(3) { animation-delay: 0.4s; }
+.equalizer span:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes pulse {
+  from { height: 6px; opacity: 0.4; }
+  to { height: 18px; opacity: 1; }
 }
 
 /* =========================
-   PERFUMES
-   ========================= */
-.perfumes ul {
-  list-style: none;
-  margin-top: 8px;
-}
-
-.perfumes li {
-  font-size: 14px;
-  margin-bottom: 6px;
-}
-
-/* =========================
-   STACK + FULL WIDTH HELPERS
+   STACK HELPERS
    ========================= */
 .stack {
   display: grid;
   gap: 20px;
 }
 
-.full-width {
-  grid-column: span 2;
-}
-
 /* =========================
-   TABLET
+   TABLET & MOBILE
    ========================= */
 @media (max-width: 1024px) {
   .page {
     grid-template-columns: 1fr;
   }
 
-  .widgets {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .hero,
+  .about,
+  .widgets,
   .full-width {
-    grid-column: span 2;
+    grid-column: 1 / -1;
   }
 }
 
-/* =========================
-   MOBILE
-   ========================= */
 @media (max-width: 680px) {
-  body {
-    padding: 24px 20px;
-  }
-
-  .widgets {
-    grid-template-columns: 1fr;
-  }
-
-  .hero,
-  .full-width {
-    grid-column: span 1;
-  }
-
   .hero-content {
     flex-direction: column;
-    align-items: flex-start;
   }
 
   .avatar {
     width: 72px;
     height: 72px;
-  }
-}
-/* FORCE DESKTOP GRID STRUCTURE */
-@media (min-width: 1024px) {
-  .profile-card {
-    grid-column: 1 / span 4;
-  }
-
-  .about-card {
-    grid-column: 5 / span 3;
-  }
-
-  .what-i-do {
-    grid-column: 1 / span 4;
-  }
-
-  .widgets {
-    grid-column: 5 / span 5;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-  }
-
-  .experience,
-  .projects {
-    grid-column: 1 / -1;
   }
 }
