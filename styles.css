@@ -43,35 +43,21 @@ body {
 }
 
 /* =========================
-   PAGE — CENTERED DESKTOP CANVAS
+   PAGE — CENTERED CANVAS
    ========================= */
 .page {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: clamp(24px, 3vw, 48px);
 }
 
 /* =========================
-   LEFT COLUMN (ABOUT)
-   ========================= */
-.about {
-  grid-column: span 4;
-  background: var(--card);
-  border: 2px solid var(--border);
-  border-radius: 20px;
-  padding: 24px;
-}
-
-/* =========================
-   RIGHT COLUMN (WIDGET DASHBOARD)
+   WIDGET GRID (MAIN LAYOUT)
    ========================= */
 .widgets {
-  grid-column: span 8;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: clamp(20px, 2.5vw, 32px);
   align-items: stretch;
 }
@@ -125,16 +111,34 @@ body {
 }
 
 /* =========================
-   WIDE WIDGETS (2/3 WIDTH)
+   WIDGET WIDTH CONTROL
    ========================= */
+
+/* Wide widgets = 2/3 width */
 .wide {
-  grid-column: span 3;
+  grid-column: span 4;
+}
+
+/* Normal widgets = 1/3 width */
+.widgets > .card:not(.hero):not(.wide):not(.full-width):not(.stack) {
+  grid-column: span 2;
 }
 
 /* =========================
-   NORMAL WIDGETS (1/3 WIDTH)
+   STACK (RIGHT COLUMN)
    ========================= */
-/* default = span 1 */
+.stack {
+  display: grid;
+  grid-column: span 2;
+  gap: 20px;
+}
+
+/* =========================
+   FULL WIDTH SECTIONS
+   ========================= */
+.full-width {
+  grid-column: 1 / -1;
+}
 
 /* =========================
    BADGE
@@ -243,26 +247,9 @@ body {
 }
 
 /* =========================
-   STACK
-   ========================= */
-.stack {
-  display: grid;
-  gap: 20px;
-}
-
-/* =========================
    TABLET
    ========================= */
 @media (max-width: 1024px) {
-  .page {
-    grid-template-columns: 1fr;
-  }
-
-  .about,
-  .widgets {
-    grid-column: 1 / -1;
-  }
-
   .widgets {
     grid-template-columns: 1fr 1fr;
   }
