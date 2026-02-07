@@ -1,117 +1,113 @@
-/* =======================
-   VARIABLES
-======================= */
+/* =========================
+   GLASS / AURA VARIABLES
+   ========================= */
 :root {
-  --glass-bg: rgba(255, 255, 255, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.45);
-  --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 
-  --bg: #f6f4ee;
-  --card: rgba(251, 250, 246, 0.75);
-  --matcha: #9bb48a;
-  --matcha-dark: #5f7356;
-  --matcha-glow: rgba(155, 180, 138, 0.45);
-
-  --border: #d8d3c8;
-  --text: #2f2f2f;
-
+  --matcha-glow: rgba(140, 200, 170, 0.35);
   --radius-lg: 28px;
   --radius-md: 20px;
 }
 
-/* =======================
+/* =========================
+   THEME
+   ========================= */
+:root {
+  --bg: #f6f4ee;
+  --card: #fbfaf6;
+  --matcha: #9bb48a;
+  --matcha-dark: #5f7356;
+  --border: #d8d3c8;
+  --text: #2f2f2f;
+}
+
+/* =========================
    RESET
-======================= */
+   ========================= */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* =======================
+/* =========================
    BASE
-======================= */
+   ========================= */
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: radial-gradient(
-      600px 300px at 20% 10%,
-      rgba(155, 180, 138, 0.18),
-      transparent 60%
-    ),
-    var(--bg);
+  background: var(--bg);
   color: var(--text);
-  padding: 40px;
+  padding: 64px 48px;
 }
 
+/* =========================
+   PAGE / DESKTOP CANVAS
+   ========================= */
 .page {
-  max-width: 1100px;
+  max-width: 1240px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 32px;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 40px;
 }
 
-/* =======================
+/* Large desktop */
+@media (min-width: 1440px) {
+  .page {
+    max-width: 1320px;
+  }
+}
+
+/* =========================
    ABOUT SECTION
-======================= */
+   ========================= */
 .about {
   background: var(--card);
-  backdrop-filter: blur(14px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-md);
+  border: 2px solid var(--border);
+  border-radius: 20px;
   padding: 24px;
-  box-shadow: var(--glass-shadow);
 }
 
 .section-title {
   font-size: 14px;
-  text-transform: lowercase;
   margin-bottom: 12px;
   opacity: 0.7;
 }
 
-/* =======================
-   WIDGET CLUSTER
-======================= */
+/* =========================
+   WIDGET GRID
+   ========================= */
 .widgets {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 28px;
   align-items: start;
 }
 
-/* =======================
-   CARDS (GLASS)
-======================= */
+/* =========================
+   CARDS
+   ========================= */
 .card {
   background: var(--card);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
+  border: 2px solid var(--border);
+  border-radius: 24px;
   padding: 20px;
   position: relative;
-  box-shadow: var(--glass-shadow);
-
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    border-color 0.35s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    0 28px 50px rgba(0, 0, 0, 0.18),
-    0 0 0 1px var(--matcha-glow);
-  border-color: var(--matcha);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
 }
 
-/* =======================
+/* =========================
    HERO
-======================= */
+   ========================= */
 .hero {
-  grid-column: span 2;
+  grid-column: span 1;
 }
 
 .hero-content {
@@ -137,9 +133,9 @@ body {
   line-height: 1.4;
 }
 
-/* =======================
+/* =========================
    PINNED BADGE
-======================= */
+   ========================= */
 .badge {
   position: absolute;
   top: -12px;
@@ -147,36 +143,30 @@ body {
   background: var(--matcha-dark);
   color: white;
   font-size: 12px;
-  padding: 6px 12px;
+  padding: 6px 10px;
   border-radius: 999px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* =======================
+/* =========================
    TAGS
-======================= */
+   ========================= */
 .tags {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-top: 12px;
-  flex-wrap: wrap;
 }
 
 .tag {
-  background: rgba(155, 180, 138, 0.25);
+  background: #e6eadf;
   padding: 6px 10px;
   border-radius: 999px;
   font-size: 12px;
-  transition: transform 0.2s ease;
 }
 
-.tag:hover {
-  transform: translateY(-2px);
-}
-
-/* =======================
-   INFO
-======================= */
+/* =========================
+   INFO LIST
+   ========================= */
 .info h3 {
   margin-bottom: 12px;
   font-size: 16px;
@@ -198,22 +188,19 @@ body {
 .icon {
   width: 28px;
   height: 28px;
-  background: rgba(155, 180, 138, 0.25);
+  background: #ece9e2;
   border-radius: 999px;
   display: grid;
   place-items: center;
   font-size: 14px;
 }
 
-/* =======================
-   NOW PLAYING
-======================= */
+/* =========================
+   NOW PLAYING (lowercase intentional)
+   ========================= */
 .now-playing {
-  background: linear-gradient(
-    135deg,
-    rgba(155, 180, 138, 0.65),
-    rgba(155, 180, 138, 0.45)
-  );
+  background: var(--matcha);
+  color: #1f2a1f;
 }
 
 .now-playing .label {
@@ -237,21 +224,11 @@ body {
   height: 14px;
   background: #2f3d2f;
   border-radius: 2px;
-  animation: pulse 1.2s ease-in-out infinite alternate;
 }
 
-.equalizer span:nth-child(2) { animation-delay: 0.2s; }
-.equalizer span:nth-child(3) { animation-delay: 0.4s; }
-.equalizer span:nth-child(4) { animation-delay: 0.6s; }
-
-@keyframes pulse {
-  from { height: 6px; opacity: 0.4; }
-  to { height: 18px; opacity: 1; }
-}
-
-/* =======================
+/* =========================
    PERFUMES
-======================= */
+   ========================= */
 .perfumes ul {
   list-style: none;
   margin-top: 8px;
@@ -262,31 +239,9 @@ body {
   margin-bottom: 6px;
 }
 
-/* =======================
-   RESPONSIVE
-======================= */
-@media (max-width: 900px) {
-  body {
-    padding: 24px;
-  }
-
-  .page {
-    grid-template-columns: 1fr;
-  }
-
-  .widgets {
-    grid-template-columns: 1fr;
-  }
-
-  .hero {
-    grid-column: span 1;
-  }
-}
-/* LAYOUT ADJUSTMENTS ONLY */
-.hero {
-  grid-column: span 1;
-}
-
+/* =========================
+   STACK + FULL WIDTH HELPERS
+   ========================= */
 .stack {
   display: grid;
   gap: 20px;
@@ -294,4 +249,50 @@ body {
 
 .full-width {
   grid-column: span 2;
+}
+
+/* =========================
+   TABLET
+   ========================= */
+@media (max-width: 1024px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .widgets {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero,
+  .full-width {
+    grid-column: span 2;
+  }
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 680px) {
+  body {
+    padding: 24px 20px;
+  }
+
+  .widgets {
+    grid-template-columns: 1fr;
+  }
+
+  .hero,
+  .full-width {
+    grid-column: span 1;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+  }
 }
