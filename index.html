@@ -1,294 +1,137 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Davina Li</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Davina Li</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-    <style>
-      /* ---------- Base ---------- */
-      * {
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
+<body>
+  <main class="page">
 
-      body {
-        margin: 0;
-        font-family:
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          sans-serif;
-        background: #05070a;
-        color: white;
-        overflow-x: hidden;
-      }
+    <!-- WIDGET DASHBOARD -->
+    <section class="widgets">
 
-      /* ---------- Aura Background ---------- */
-      .aura {
-        position: fixed;
-        inset: 0;
-        z-index: -1;
-        overflow: hidden;
-      }
+      <!-- HI I'M DAVINA (HERO) -->
+      <div class="card hero">
+        <span class="badge">📌 pinned</span>
 
-      .aura::before,
-      .aura::after {
-        content: "";
-        position: absolute;
-        width: 650px;
-        height: 650px;
-        border-radius: 50%;
-        filter: blur(170px);
-        opacity: 0.6;
-        animation: float 20s infinite alternate ease-in-out;
-      }
+        <div class="hero-content">
+          <img
+            class="avatar"
+            src="images/me.jpeg"
+            alt="Profile photo"
+          />
 
-      .aura::before {
-        background: #2563eb;
-        top: -250px;
-        left: -250px;
-      }
-
-      .aura::after {
-        background: #0ea5e9;
-        bottom: -250px;
-        right: -250px;
-        animation-delay: 6s;
-      }
-
-      @keyframes float {
-        from {
-          transform: translateY(0px);
-        }
-        to {
-          transform: translateY(140px);
-        }
-      }
-
-      /* ---------- Navbar ---------- */
-      .navbar {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 18px 40px;
-        backdrop-filter: blur(22px);
-        background: rgba(255, 255, 255, 0.08);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-      }
-
-      .navbar h1 {
-        margin: 0;
-        font-size: 1.3rem;
-        font-weight: 700;
-      }
-
-      .nav-links a {
-        margin-left: 24px;
-        text-decoration: none;
-        color: white;
-        opacity: 0.85;
-        font-weight: 500;
-      }
-
-      .nav-links a:hover {
-        opacity: 1;
-      }
-
-      /* ---------- Layout ---------- */
-      .page {
-        max-width: 1200px;
-        margin: auto;
-        padding: 80px 40px;
-      }
-
-      .section {
-        margin-bottom: 100px;
-      }
-
-      /* ---------- Glass ---------- */
-      .glass {
-        background: rgba(255, 255, 255, 0.12);
-        backdrop-filter: blur(26px) saturate(160%);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        border-radius: 22px;
-        padding: 30px;
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-      }
-
-      /* ---------- Stats Grid ---------- */
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 28px;
-      }
-
-      .stat-box h3 {
-        margin-top: 0;
-        font-size: 1.2rem;
-        font-weight: 700;
-      }
-
-      .stat-line {
-        margin-bottom: 10px;
-        font-size: 0.95rem;
-        opacity: 0.9;
-      }
-
-      .stat-line span {
-        font-weight: 600;
-      }
-
-      /* ---------- Tokens ---------- */
-      .tokens {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 14px;
-      }
-
-      .token {
-        padding: 8px 14px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.15);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        font-size: 0.8rem;
-        transition:
-          transform 0.2s,
-          background 0.2s;
-      }
-
-      .token:hover {
-        transform: scale(1.08);
-        background: rgba(37, 99, 235, 0.35);
-      }
-
-      /* ---------- Scroll Animation ---------- */
-      .fade-in {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 0.9s ease;
-      }
-
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* ---------- Responsive ---------- */
-      @media (max-width: 900px) {
-        .stats-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="aura"></div>
-
-    <!-- NAV -->
-    <nav class="navbar">
-      <h1>Davina Li</h1>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-      </div>
-    </nav>
-
-    <div class="page">
-      <!-- STATS / ABOUT -->
-      <section id="about" class="section fade-in">
-        <div class="stats-grid">
-          <!-- Profile Stats -->
-          <div class="glass stat-box">
-            <h3><strong>Profile</strong></h3>
-
-            <div class="stat-line"><span>Name:</span> Davina Li</div>
-            <div class="stat-line"><span>Age:</span> 20</div>
-            <div class="stat-line"><span>Gender:</span> Female</div>
-
-            <div class="stat-line"><span>Interests:</span></div>
-            <div class="tokens">
-              <div class="token">Product Management</div>
-              <div class="token">Data Analytics</div>
-              <div class="token">Customer Experience</div>
-              <div class="token">Technology Entrepreneurship</div>
-              <div class="token">Data-Driven Decision Making</div>
-            </div>
-          </div>
-
-          <!-- What I Do -->
-          <div class="glass stat-box">
-            <h3><strong>What I Do</strong></h3>
+          <div>
+            <h1>Hi I’m Davina ✨</h1>
             <p>
-              I work as a Product Operations Associate (Customer Experience) at
-              Turno, turning customer feedback into actionable insights. I lead
-              Voice of the Customer initiatives and build tools such as
-              Productboard to bridge Customer Success, Experience, and Product.
+              I am a junior at Babson College studying Technology Entrepreneurship
+              and Data Analytics. I’m interested in building data-driven solutions
+              that make customer experiences frictionless.
             </p>
-          </div>
 
-          <!-- Who I Am -->
-          <div class="glass stat-box">
-            <h3><strong>Who I Am</strong></h3>
-            <p>
-              Hi, my name is Davina Li, and I am a junior at Babson College
-              studying Technology Entrepreneurship and Data Analytics. I am
-              interested in building data-driven solutions that make customer
-              experiences frictionless.
-            </p>
-          </div>
-
-          <!-- Skills -->
-          <div class="glass stat-box">
-            <h3><strong>Skills</strong></h3>
-            <div class="tokens">
-              <div class="token">Product Thinking</div>
-              <div class="token">Voice of the Customer</div>
-              <div class="token">Data Analytics</div>
-              <div class="token">Customer Research</div>
-              <div class="token">Cross-Functional Collaboration</div>
-              <div class="token">Product Tools (Productboard)</div>
-              <div class="token">Technical Foundations</div>
+            <div class="tags">
+              <span class="tag">SQL</span>
+              <span class="tag">Mixpanel</span>
+              <span class="tag">Metabase</span>
+              <span class="tag">Productboard</span>
+              <span class="tag">Balsamiq</span>
+              <span class="tag">Figma</span>
+              <span class="tag">Jira</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">VS Code</span>
+              <span class="tag">Excel</span>
+              <span class="tag">Braze</span>
+              <span class="tag">Atlassian Suite</span>
+              <span class="tag">Optimization</span>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+
+      <!-- ABOUT ME (SEPARATE WIDGET) -->
+      <div class="card">
+        <h3>About Me</h3>
+        <ul class="info-list">
+          <li><span class="icon">📍</span> Honolulu, HI</li>
+          <li><span class="icon">✉️</span> davinali723@gmail.com</li>
+          <li><span class="icon">♡</span> matcha, basketball, cats</li>
+          <li><span class="icon">♪</span> indie pop, jazz</li>
+          <li><span class="icon">✦</span> INFJ · Leo</li>
+        </ul>
+      </div>
+
+      <!-- WHAT I DO (WIDE) -->
+      <div class="card wide">
+        <h3>What I Do</h3>
+        <p>
+          I work as a Product Operations Associate (Customer Experience) at Turno,
+          turning customer feedback into actionable insights. I lead Voice of the
+          Customer initiatives and build tools such as Productboard to bridge
+          Customer Success, Experience, and Product.
+        </p>
+      </div>
+
+      <!-- STACKED COLUMN -->
+      <div class="stack">
+        <div class="card now-playing">
+          <span class="label">now playing</span>
+          <h4>E85</h4>
+          <p>Don Toliver</p>
+          <div class="equalizer">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="card perfumes">
+          <h4>Scents I’m Wearing</h4>
+          <ul>
+            <li>Tamburins — Bottari</li>
+            <li>Le Labo — Matcha</li>
+            <li>Lake & Sky — 11 11</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- AI STACK (WIDE) -->
+      <div class="card wide">
+        <h3>AI stack</h3>
+        <div class="tags">
+          <span class="tag">Lovable</span>
+          <span class="tag">v0.dev</span>
+          <span class="tag">Figma Make</span>
+          <span class="tag">Tasklet (Agentic AI)</span>
+          <span class="tag">Shortwave</span>
+        </div>
+      </div>
+
+      <!-- TECH SKILLS -->
+      <div class="card">
+        <h3>Technical Skills</h3>
+        <div class="tags">
+          <span class="tag">SQL</span>
+          <span class="tag">Analytics</span>
+          <span class="tag">Experimentation</span>
+          <span class="tag">Data Modeling</span>
+          <span class="tag">Systems Thinking</span>
+        </div>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <div class="card full-width">
+        <h3>Experience</h3>
+        <p>(Add roles, companies, and impact here)</p>
+      </div>
 
       <!-- PROJECTS -->
-      <section id="projects" class="section fade-in">
-        <div class="glass">
-          <h2><strong>My Projects</strong></h2>
-          <p>
-            Coming soon — product, data, and customer-focused projects I’ve
-            worked on or am currently building.
-          </p>
-        </div>
-      </section>
-    </div>
+      <div class="card full-width">
+        <h3>Projects</h3>
+        <p>(Add selected projects here)</p>
+      </div>
 
-    <script>
-      /* Scroll reveal */
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
-          });
-        },
-        { threshold: 0.2 },
-      );
-
-      document
-        .querySelectorAll(".fade-in")
-        .forEach((el) => observer.observe(el));
-    </script>
-  </body>
+    </section>
+  </main>
+</body>
 </html>
