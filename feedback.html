@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback - Davina Li</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul class="site-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="feedback-section">
+      <div class="card feedback-card">
+        <h1>Share Your Feedback</h1>
+        <p class="feedback-intro">
+          Your feedback helps me improve my projects and work. Whether it's a suggestion, bug report, or general comment, I'd love to hear it!
+        </p>
+
+        <form class="feedback-form" id="feedbackForm" novalidate>
+          <div class="form-group">
+            <fieldset>
+              <legend>Feedback Type <span aria-label="required">*</span></legend>
+              <div class="radio-group">
+                <div class="radio-item">
+                  <input
+                    type="radio"
+                    id="feedback-suggestion"
+                    name="feedback-type"
+                    value="Suggestion"
+                    required
+                    aria-required="true"
+                  />
+                  <label for="feedback-suggestion">Suggestion</label>
+                </div>
+                <div class="radio-item">
+                  <input
+                    type="radio"
+                    id="feedback-bug"
+                    name="feedback-type"
+                    value="Bug Report"
+                    required
+                    aria-required="true"
+                  />
+                  <label for="feedback-bug">Bug Report</label>
+                </div>
+                <div class="radio-item">
+                  <input
+                    type="radio"
+                    id="feedback-general"
+                    name="feedback-type"
+                    value="General Feedback"
+                    required
+                    aria-required="true"
+                  />
+                  <label for="feedback-general">General Feedback</label>
+                </div>
+                <div class="radio-item">
+                  <input
+                    type="radio"
+                    id="feedback-other"
+                    name="feedback-type"
+                    value="Other"
+                    required
+                    aria-required="true"
+                  />
+                  <label for="feedback-other">Other</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <label for="feedback-message">Your Feedback <span aria-label="required">*</span></label>
+            <textarea
+              id="feedback-message"
+              name="message"
+              placeholder="Tell me what's on your mind..."
+              rows="6"
+              required
+              aria-required="true"
+            ></textarea>
+          </div>
+
+          <fieldset class="optional-section">
+            <legend>Optional: Help me follow up</legend>
+            
+            <div class="form-group">
+              <label for="feedback-name">Name</label>
+              <input
+                type="text"
+                id="feedback-name"
+                name="name"
+                placeholder="Your name (optional)"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="feedback-email">Email</label>
+              <input
+                type="email"
+                id="feedback-email"
+                name="email"
+                placeholder="your.email@example.com (optional)"
+              />
+            </div>
+          </fieldset>
+
+          <button type="submit" class="submit-btn">Submit Feedback</button>
+          <div id="successMessage" class="success-message" style="display: none;">
+            ✓ Thank you for your feedback!
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Feedback Board -->
+    <section class="feedback-board-section">
+      <div class="card feedback-board">
+        <h2>Community Feedback</h2>
+        <div id="feedbackList" class="feedback-list">
+          <p class="empty-state">No feedback yet. Be the first to share!</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
