@@ -81,10 +81,10 @@ body {
 }
 
 /* =========================
-   HERO — FULL WIDTH
+   HERO — MAIN COLUMN
    ========================= */
 .widgets .hero {
-  grid-column: 1 / -1;
+  grid-column: span 4;
 }
 
 .hero-content {
@@ -277,3 +277,47 @@ body {
     height: 72px;
   }
 }
+
+/* =========================
+   NAVIGATION + FOOTER
+   ========================= */
+header {
+  margin-bottom: 20px;
+}
+
+header nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 6px 0;
+}
+
+.site-nav {
+  list-style: none;
+  display: flex;
+  gap: 14px;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.site-nav li {
+  margin: 0;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 999px;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.12s ease;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+  background: var(--matcha);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
