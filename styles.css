@@ -134,6 +134,15 @@ body {
 }
 
 /* =========================
+   MIDDLE STACK (AI + TECH)
+   ========================= */
+.mid-stack {
+  display: grid;
+  grid-column: span 2;
+  gap: 20px;
+}
+
+/* =========================
    FULL WIDTH SECTIONS
    ========================= */
 .full-width {
