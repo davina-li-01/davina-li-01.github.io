@@ -9,10 +9,15 @@
 
 <body>
   <header>
-    <nav>
+    <nav class="site-header">
+      <div class="nav-left">
+        <a href="index.html" class="logo">Davina Li</a>
+        <button class="back-btn" id="backBtn" aria-label="Go back to previous page" style="display: none;">← Back</button>
+      </div>
       <ul class="site-nav">
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="feedback.html" class="nav-link">Feedback</a></li>
       </ul>
     </nav>
   </header>
@@ -148,5 +153,7 @@
 
     </section>
   </main>
+
+  <script src="nav.js"></script>
 </body>
 </html>
