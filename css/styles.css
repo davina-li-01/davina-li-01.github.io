@@ -88,6 +88,42 @@ body {
   line-height: 1.7;
 }
 
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.projects-widget {
+  background: var(--card);
+  border-color: var(--matcha);
+}
+
+.project-item {
+  display: block;
+  margin-top: 14px;
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px solid var(--matcha);
+  background: rgba(155, 180, 138, 0.24);
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-item h4 {
+  margin-bottom: 8px;
+  color: var(--matcha-dark);
+}
+
+.project-item p {
+  margin-bottom: 10px;
+}
+
+.project-item span {
+  color: var(--matcha-dark);
+  font-weight: 700;
+}
+
 /* =========================
    HERO — MAIN COLUMN
    ========================= */
@@ -155,6 +191,7 @@ body {
 /* Wide widgets = 2/3 width */
 .wide {
   grid-column: span 4;
+  background-color: rgba(155, 180, 138, 0.1);
 }
 
 /* Normal widgets = 1/3 width */
