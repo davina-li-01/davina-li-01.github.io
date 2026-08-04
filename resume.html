@@ -26,9 +26,12 @@
         </a>
         <button class="backlink" id="backBtn" type="button" hidden>&larr; Back</button>
       </div>
-      <nav class="nav" aria-label="Primary">
+      <button class="burger" type="button" data-burger aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <span class="burger__box" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+      <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
         <ul>
-          <li><a href="index.html">Index</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="projects.html">Work</a></li>
           <li><a href="contacts.html">Contact</a></li>
           <li><a href="resume.html" aria-current="page">Resume</a></li>
@@ -40,28 +43,53 @@
   <main id="main">
 
     <section class="hero" aria-labelledby="pagetitle">
-      <div class="hero__ruler" aria-hidden="true"></div>
       <div class="shell hero__inner">
         <div class="hero__eyebrow">
-          <span class="meta">PDF, one page</span>
-          <span class="meta">Updated August 2026</span>
-          <span class="meta meta--accent">Read or download</span>
+          <span class="meta">My experiences</span>
+          <span class="meta meta--accent">Updated August 2026</span>
         </div>
 
         <h1 class="hero__name hero__name--sm" id="pagetitle">
+          <span>My</span>
           <span>Resume</span>
-          <span>2026</span>
         </h1>
+
+        <div class="hero__body hero__body--wide">
+          <div>
+            <p class="lede">
+              A B.S. in Business Administration with a double concentration in
+              Technology Entrepreneurship and Business Analytics, built on
+              product operations, product management, and digital content.
+            </p>
+            <div class="prose" style="margin-top: 1.25rem; max-width: 50ch;">
+              <p>
+                I pair data-driven decision making with an entrepreneurial
+                streak to move work that matters.
+              </p>
+            </div>
+          </div>
+
+          <div class="hero__side">
+            <p class="meta hero__sideLabel">At a glance</p>
+            <ul class="minilist">
+              <li><div><span>Babson College, B.S.</span><span class="meta">May 2027</span></div></li>
+              <li><div><span>Business Transformation Consultant @ IBM</span><span class="meta">Summer 2026</span></div></li>
+              <li><div><span>Product Operations &amp; Business Transformation</span><span class="meta">Focus</span></div></li>
+              <li><div><span>Resume version</span><span class="meta">August 2026</span></div></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="sec" aria-label="Resume">
+    <section class="sec sec--tan" aria-label="Resume">
       <div class="shell">
         <div class="rsum">
 
           <div class="rsum__aside">
             <p class="lede">
-              One page, no filler. Read it below or take the PDF with you.
+              One page, no filler. Use the buttons to open or download the PDF
+              &mdash; on a wide screen there is a live preview beside them.
             </p>
 
             <div class="actions">
@@ -93,11 +121,10 @@
               <div class="spec__row">
                 <dt class="meta spec__label">Experience</dt>
                 <dd class="spec__value">
-                  <strong>IBM</strong>, <strong>Turno</strong>, <strong>Quiet Press</strong>, <strong>blankfilmhi</strong>
+                  <strong>IBM</strong>, <strong>Mana Up</strong>, <strong>Turno</strong>, <strong>Quiet Press</strong>, <strong>blankfilmhi</strong>
                   <span class="spec__aside">
-                    Healthcare workflow consulting, product operations, and two
-                    businesses I started. The full detail is on the
-                    <a class="link" href="index.html#s-work">home page</a>.
+                    Consulting, product operations, and the businesses I
+                    started. The PDF has the dates and the detail.
                   </span>
                 </dd>
               </div>
@@ -108,19 +135,6 @@
                   <span class="spec__aside">
                     VP of Brand Management, and founder and president of Babson's
                     first Hawaii club.
-                  </span>
-                </dd>
-              </div>
-              <div class="spec__row">
-                <dt class="meta spec__label">Languages</dt>
-                <dd class="spec__value">English, Mandarin Chinese, Laotian</dd>
-              </div>
-              <div class="spec__row">
-                <dt class="meta spec__label">Contact</dt>
-                <dd class="spec__value">
-                  <a class="link" href="mailto:davinali723@gmail.com">davinali723@gmail.com</a>
-                  <span class="spec__aside">
-                    Or the <a class="link" href="contacts.html">contact index</a>.
                   </span>
                 </dd>
               </div>
@@ -137,12 +151,12 @@
             <div class="viewer__fallback">
               <p class="meta">Inline preview</p>
               <p class="prose" style="margin-top: 0.75rem;">
-                Small screens render embedded PDFs badly, so I left the preview off
-                here on purpose. Open it in a new tab or download it instead.
+                Phones render embedded PDFs unreliably, so there is no preview on
+                this screen. Tap the button below to open the full resume.
               </p>
               <div class="actions">
                 <a class="btn btn--solid" href="resume/davina-li-resume.pdf" target="_blank" rel="noopener">
-                  Open the PDF
+                  Open the PDF preview
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                     <path d="M6 3h7v7M13 3 4 12" />
                   </svg>
@@ -165,33 +179,18 @@
           <ul class="foot__list">
             <li><a class="link link--reveal" href="mailto:davinali723@gmail.com">davinali723@gmail.com</a></li>
             <li><a class="link link--reveal" href="https://www.linkedin.com/in/davina-li/" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a class="link link--reveal" href="https://github.com/davina-li-01" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a class="link link--reveal" href="contacts.html">Everything else</a></li>
           </ul>
         </div>
 
         <div class="foot__col">
           <h2>Pages</h2>
           <ul class="foot__list">
-            <li><a class="link link--reveal" href="index.html">Index</a></li>
+            <li><a class="link link--reveal" href="index.html">Home</a></li>
             <li><a class="link link--reveal" href="projects.html">Work</a></li>
             <li><a class="link link--reveal" href="contacts.html">Contact</a></li>
           </ul>
         </div>
 
-        <div class="foot__col">
-          <h2>Off the clock</h2>
-          <ul class="foot__list">
-            <li>Matcha, basketball, cats</li>
-            <li>Tamburins Bottari, Le Labo Matcha, Lake &amp; Sky 11 11</li>
-            <li>
-              <span class="np">
-                <span class="np__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                E85, Don Toliver
-              </span>
-            </li>
-          </ul>
-        </div>
       </div>
 
       <div class="foot__bottom">

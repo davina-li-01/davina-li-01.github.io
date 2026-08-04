@@ -2,8 +2,74 @@
 // document, so highlighting works before this file loads and without JS.
 document.addEventListener('DOMContentLoaded', function () {
   setupBackButton();
+  setupMenu();
+  setupScrollCue();
   document.querySelectorAll('[data-carousel]').forEach(setupCarousel);
 });
+
+// The drawer for narrow screens. The button is hidden by CSS above 720px, so
+// there is nothing to undo on wide screens beyond resetting state if someone
+// resizes while it is open.
+function setupMenu() {
+  var burger = document.querySelector('[data-burger]');
+  var nav = document.querySelector('[data-nav]');
+  if (!burger || !nav) return;
+
+  var open = false;
+
+  function set(state) {
+    open = state;
+    burger.setAttribute('aria-expanded', String(state));
+    burger.setAttribute('aria-label', state ? 'Close menu' : 'Open menu');
+    nav.setAttribute('data-open', String(state));
+    // Closed, the drawer is clipped rather than removed, so it would still be
+    // reachable by keyboard. inert takes it out of the tree entirely.
+    if (state) nav.removeAttribute('inert');
+    else nav.setAttribute('inert', '');
+  }
+
+  // The bar is only ever a drawer below the breakpoint; above it the nav is a
+  // plain row and must never be inert.
+  var narrow = window.matchMedia('(max-width: 720px)');
+
+  function apply() {
+    if (narrow.matches) {
+      set(open);
+    } else {
+      open = false;
+      burger.setAttribute('aria-expanded', 'false');
+      nav.removeAttribute('data-open');
+      nav.removeAttribute('inert');
+    }
+  }
+
+  burger.addEventListener('click', function () { set(!open); });
+
+  // Anywhere outside the bar closes it, which is what people try first.
+  document.addEventListener('click', function (e) {
+    if (!open) return;
+    if (e.target.closest('.bar')) return;
+    set(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && open) {
+      set(false);
+      burger.focus();
+    }
+  });
+
+  // In-page anchors do not reload, so the drawer would stay open over the
+  // section it just scrolled to.
+  nav.addEventListener('click', function (e) {
+    if (e.target.closest('a')) set(false);
+  });
+
+  if (narrow.addEventListener) narrow.addEventListener('change', apply);
+  else narrow.addListener(apply);
+
+  apply();
+}
 
 // Only offer "back" when there is somewhere on this site to go back to.
 function setupBackButton() {
@@ -20,6 +86,27 @@ function setupBackButton() {
   backBtn.addEventListener('click', function () {
     window.history.back();
   });
+}
+
+// Retire the cue once the reader has taken the hint. Without JS it simply
+// stays put, which is harmless — it is a working link either way.
+function setupScrollCue() {
+  var cue = document.querySelector('[data-scrollcue]');
+  if (!cue) return;
+
+  function sync() {
+    if (window.scrollY > 80) cue.setAttribute('data-past', '');
+    else cue.removeAttribute('data-past');
+  }
+
+  var queued = false;
+  window.addEventListener('scroll', function () {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () { queued = false; sync(); });
+  }, { passive: true });
+
+  sync();
 }
 
 // The track scrolls and snaps on its own. This only adds the buttons and the

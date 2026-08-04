@@ -26,9 +26,12 @@
         </a>
         <button class="backlink" id="backBtn" type="button" hidden>&larr; Back</button>
       </div>
-      <nav class="nav" aria-label="Primary">
+      <button class="burger" type="button" data-burger aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <span class="burger__box" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+      <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
         <ul>
-          <li><a href="index.html">Index</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="projects.html" aria-current="page">Work</a></li>
           <li><a href="contacts.html">Contact</a></li>
           <li><a href="resume.html">Resume</a></li>
@@ -40,11 +43,10 @@
   <main id="main">
 
     <section class="hero" aria-labelledby="pagetitle">
-      <div class="hero__ruler" aria-hidden="true"></div>
       <div class="shell hero__inner">
         <div class="hero__eyebrow">
           <span class="meta">Four projects</span>
-          <span class="meta">2024 &rarr; 2026</span>
+          <span class="meta">2025 &rarr; 2026</span>
           <span class="meta meta--accent">Designed and built by me</span>
         </div>
 
@@ -61,22 +63,32 @@
               where I got it wrong first.
             </p>
           </div>
+
+          <div class="hero__side">
+            <p class="meta hero__sideLabel">On this page</p>
+            <ul class="minilist">
+              <li><a href="#internship-tracker"><span>Internship Tracker</span><span class="meta">2026</span></a></li>
+              <li><a href="#hush"><span>Hush</span><span class="meta">2026</span></a></li>
+              <li><a href="#budget-tracker"><span>Budget Tracker</span><span class="meta">2026</span></a></li>
+              <li><a href="#chapter-site"><span>Delta Sigma Pi</span><span class="meta">2025</span></a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="sec" aria-label="Project list">
+    <section class="sec sec--tan" aria-label="Project list">
       <div class="shell">
-        <div>
+        <div class="works">
 
-          <article class="entry">
+          <article class="entry" id="internship-tracker">
             <p class="meta">01 <span style="color: var(--ink-25);" aria-hidden="true">/</span> 2026</p>
             <div>
               <h2 class="entry__org">Internship Tracker</h2>
               <p class="entry__role">
                 <span class="meta meta--ink">Web app</span>
                 <span class="meta">Personal build</span>
-                <span class="meta">Live</span>
+                <span class="meta">May 2026</span>
               </p>
 
               <div class="projbody">
@@ -118,7 +130,7 @@
             </div>
           </article>
 
-          <article class="entry">
+          <article class="entry" id="hush">
             <p class="meta">02 <span style="color: var(--ink-25);" aria-hidden="true">/</span> 2026</p>
             <div>
               <h2 class="entry__org">Hush</h2>
@@ -165,8 +177,52 @@
             </div>
           </article>
 
-          <article class="entry">
-            <p class="meta">03 <span style="color: var(--ink-25);" aria-hidden="true">/</span> 2025</p>
+          <article class="entry" id="budget-tracker">
+            <p class="meta">03 <span style="color: var(--ink-25);" aria-hidden="true">/</span> 2026</p>
+            <div>
+              <h2 class="entry__org">Budget Tracker</h2>
+              <p class="entry__role">
+                <span class="meta meta--ink">Web app</span>
+                <span class="meta">Personal finance</span>
+                <span class="meta">April 2026</span>
+              </p>
+
+              <div class="projbody">
+                <figure class="shot">
+                  <img src="images/work/budget-tracker.jpg" alt="The Flux Budget log-in screen, with username and password fields beside the Flux Budget mark" width="1100" height="734" loading="lazy" />
+                  <figcaption class="meta">davina-li-01.github.io/budget-tracker</figcaption>
+                </figure>
+
+                <div>
+                  <div class="entry__text">
+                    <p>
+                      Income, expenses, and the spending habits sitting underneath
+                      them, in one place. It is where I learned that a spreadsheet
+                      stops being a spreadsheet the moment two people need it.
+                    </p>
+                  </div>
+                  <div class="lesson">
+                    <h3>What it taught me</h3>
+                    <p>
+                      Build the data model first. I designed the screens first and
+                      then spent the rest of the project apologizing to them.
+                    </p>
+                  </div>
+                  <div class="actions">
+                    <a class="btn" href="https://davina-li-01.github.io/budget-tracker/login.html" target="_blank" rel="noopener">
+                      Open Budget Tracker
+                      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M6 3h7v7M13 3 4 12" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="entry" id="chapter-site">
+            <p class="meta">04 <span style="color: var(--ink-25);" aria-hidden="true">/</span> 2025</p>
             <div>
               <h2 class="entry__org">Delta Sigma Pi, Gamma Upsilon</h2>
               <p class="entry__role">
@@ -204,51 +260,6 @@
                   <div class="actions">
                     <a class="btn" href="https://davina-li-01.github.io/deltasigmapi-gamma-upsilon-chapter/" target="_blank" rel="noopener">
                       Visit the chapter site
-                      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                        <path d="M6 3h7v7M13 3 4 12" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="entry">
-            <p class="meta">04 <span style="color: var(--ink-25);" aria-hidden="true">/</span> 2024</p>
-            <div>
-              <h2 class="entry__org">Budget Tracker</h2>
-              <p class="entry__role">
-                <span class="meta meta--ink">Web app</span>
-                <span class="meta">Personal finance</span>
-                <span class="meta">Earliest build here</span>
-              </p>
-
-              <div class="projbody">
-                <figure class="shot">
-                  <img src="images/work/budget-tracker.jpg" alt="The Flux Budget log-in screen, with username and password fields beside the Flux Budget mark" width="1100" height="734" loading="lazy" />
-                  <figcaption class="meta">davina-li-01.github.io/budget-tracker</figcaption>
-                </figure>
-
-                <div>
-                  <div class="entry__text">
-                    <p>
-                      Income, expenses, and the spending habits sitting underneath
-                      them, in one place. It is the oldest thing on this page and it
-                      shows, but it is where I learned that a spreadsheet stops being
-                      a spreadsheet the moment two people need it.
-                    </p>
-                  </div>
-                  <div class="lesson">
-                    <h3>What it taught me</h3>
-                    <p>
-                      Build the data model first. I designed the screens first and
-                      then spent the rest of the project apologizing to them.
-                    </p>
-                  </div>
-                  <div class="actions">
-                    <a class="btn" href="https://davina-li-01.github.io/budget-tracker/login.html" target="_blank" rel="noopener">
-                      Open Budget Tracker
                       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                         <path d="M6 3h7v7M13 3 4 12" />
                       </svg>
@@ -303,33 +314,18 @@
           <ul class="foot__list">
             <li><a class="link link--reveal" href="mailto:davinali723@gmail.com">davinali723@gmail.com</a></li>
             <li><a class="link link--reveal" href="https://www.linkedin.com/in/davina-li/" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a class="link link--reveal" href="https://github.com/davina-li-01" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a class="link link--reveal" href="contacts.html">Everything else</a></li>
           </ul>
         </div>
 
         <div class="foot__col">
           <h2>Pages</h2>
           <ul class="foot__list">
-            <li><a class="link link--reveal" href="index.html">Index</a></li>
+            <li><a class="link link--reveal" href="index.html">Home</a></li>
             <li><a class="link link--reveal" href="contacts.html">Contact</a></li>
             <li><a class="link link--reveal" href="resume.html">Resume</a></li>
           </ul>
         </div>
 
-        <div class="foot__col">
-          <h2>Off the clock</h2>
-          <ul class="foot__list">
-            <li>Matcha, basketball, cats</li>
-            <li>Tamburins Bottari, Le Labo Matcha, Lake &amp; Sky 11 11</li>
-            <li>
-              <span class="np">
-                <span class="np__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                E85, Don Toliver
-              </span>
-            </li>
-          </ul>
-        </div>
       </div>
 
       <div class="foot__bottom">
