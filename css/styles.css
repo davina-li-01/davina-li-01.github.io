@@ -1984,7 +1984,7 @@ a:focus-visible .shot img,
   border-top: 1px solid var(--ink);
 }
 .h-close h2 { font-size: 1.625rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; }
-.h-close p { margin-top: 8px; font-size: 0.906rem; color: var(--ink-45); }
+.h-close p { margin-top: 10px; max-width: 58ch; font-size: 0.9375rem; line-height: 1.6; color: var(--ink-45); }
 .h-contact { display: flex; flex-direction: column; justify-content: center; gap: 8px; }
 .h-contact a {
   display: flex;
