@@ -5,7 +5,71 @@ document.addEventListener('DOMContentLoaded', function () {
   setupMenu();
   setupScrollCue();
   document.querySelectorAll('[data-carousel]').forEach(setupCarousel);
+  setupTabs();
 });
+
+// Product / Marketing on the work page. The URL hash picks the starting tab,
+// including a hash that points at a single project inside one of the panels,
+// so links like projects.html#reel-agent land in the right place.
+function setupTabs() {
+  var bar = document.querySelector('[data-tabs]');
+  if (!bar) return;
+
+  var tabs = Array.prototype.slice.call(bar.querySelectorAll('[data-tab]'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('[data-panel]'));
+
+  function show(name, focus) {
+    tabs.forEach(function (t) {
+      var on = t.getAttribute('data-tab') === name;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      if (on && focus) t.focus();
+    });
+    panels.forEach(function (p) {
+      p.hidden = p.getAttribute('data-panel') !== name;
+    });
+  }
+
+  function fromHash() {
+    var id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return null;
+    var el = document.getElementById(id);
+    var panel = el && el.closest('[data-panel]');
+    return panel ? panel.getAttribute('data-panel') : null;
+  }
+
+  bar.hidden = false;
+  document.documentElement.classList.add('js-tabs');
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () {
+      var name = t.getAttribute('data-tab');
+      show(name);
+      history.replaceState(null, '', '#' + name);
+    });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var next = tabs[(i + d + tabs.length) % tabs.length];
+      show(next.getAttribute('data-tab'), true);
+    });
+  });
+
+  // Links elsewhere on the page that should switch tabs before scrolling.
+  document.querySelectorAll('[data-tab-link]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      show(a.getAttribute('data-tab-link'));
+    });
+  });
+
+  window.addEventListener('hashchange', function () {
+    var name = fromHash();
+    if (name) show(name);
+  });
+
+  show(fromHash() || tabs[0].getAttribute('data-tab'));
+}
 
 // The drawer for narrow screens. The button is hidden by CSS above 720px, so
 // there is nothing to undo on wide screens beyond resetting state if someone

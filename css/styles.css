@@ -1,12 +1,9 @@
 /* ==========================================================================
    Davina Li — personal site
-   Type:    Archivo (variable width + weight) for display and text,
-            IBM Plex Mono for metadata. Two families, deliberately paired:
-            the grotesque carries voice, the mono carries data.
-   Color:   two only. Bone-cream paper, warm near-black ink. No accent, no
-            gradients: hierarchy comes from weight, width, and scale instead.
-            Every neutral is warm — the greys are the ink at opacity, never a
-            cool grey, so nothing on the page reads blue against the paper.
+   Type:    Helvetica Neue (Archivo as fallback) for display and text,
+            IBM Plex Mono for metadata. Matched to the homepage.
+   Color:   cream paper, near-black ink, one red accent (#d63a1f) for
+            numbers, the current page, and primary buttons.
    Layout:  12 columns, hairline rules, a mono rail on the left.
    ========================================================================== */
 
@@ -18,31 +15,31 @@
      sheet if every section shares a background, so sections alternate
      between paper, tan, and deep, and the cards sit a step above whatever
      they land on. */
-  --paper:        #f2f0e2;
-  --paper-raise:  #faf9f2;
-  --paper-sunk:   #e4dfc9;
-  --paper-deep:   #2e2c22;
-  --ink:          #232019;
-  --ink-70:       rgba(35, 32, 25, 0.72);
+  --paper:        #f2eee5;
+  --paper-raise:  #f2eee5;
+  --paper-sunk:   #e8e2d5;
+  --paper-deep:   #151513;
+  --ink:          #151513;
+  --ink-70:       rgba(21, 21, 19, 0.8);
   /* 0.66 rather than something lighter: this is the metadata colour, and it
      measures 5.0:1 on the paper. Anything paler fails. */
-  --ink-45:       rgba(35, 32, 25, 0.66);
-  --ink-25:       rgba(35, 32, 25, 0.26);
-  --rule:         rgba(35, 32, 25, 0.2);
-  --rule-faint:   rgba(35, 32, 25, 0.09);
+  --ink-45:       #67635a;
+  --ink-25:       rgba(21, 21, 19, 0.26);
+  --rule:         #cbc4b4;
+  --rule-faint:   #cbc4b4;
   /* Emphasis is the same ink. Kept as its own token so the whole site can
      be re-pointed at a real accent later from one line. */
-  --accent:       #232019;
-  --accent-deep:  #12100c;
+  --accent:       #d63a1f;
+  --accent-deep:  #b02f18;
 
   /* Elevation. Two steps, both warm — a neutral grey shadow on this paper
      reads as a smudge. The long, offset second layer does the lifting; the
      tight first layer only keeps the card edge from floating. */
-  --lift:    0 1px 1px rgba(35, 32, 25, 0.03), 0 10px 28px -14px rgba(35, 32, 25, 0.22);
-  --lift-hi: 0 2px 3px rgba(35, 32, 25, 0.05), 0 22px 46px -18px rgba(35, 32, 25, 0.3);
+  --lift:    none;
+  --lift-hi: none;
 
   /* Type */
-  --display: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --display: 'Helvetica Neue', Helvetica, 'Archivo', Arial, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
   /* Rhythm. Every vertical space is a multiple of --beat. */
@@ -110,7 +107,7 @@ button {
    -------------------------------------------------------------------------- */
 body {
   font-family: var(--display);
-  font-variation-settings: 'wdth' 100, 'wght' 400;
+  font-weight: 400;
   font-size: clamp(0.9375rem, 0.92rem + 0.15vw, 1rem);
   line-height: 1.6;
   color: var(--ink);
@@ -202,14 +199,14 @@ body {
   font-size: clamp(1.0625rem, 1rem + 0.45vw, 1.25rem);
   line-height: 1.5;
   letter-spacing: -0.012em;
-  font-variation-settings: 'wdth' 100, 'wght' 400;
+  font-weight: 400;
   max-width: 46ch;
   text-wrap: pretty;
 }
 
 .prose p + p { margin-top: calc(var(--beat) * 2.5); }
 .prose { color: var(--ink-70); text-wrap: pretty; }
-.prose strong { color: var(--ink); font-variation-settings: 'wdth' 100, 'wght' 600; }
+.prose strong { color: var(--ink); font-weight: 700; }
 
 /* --------------------------------------------------------------------------
    6. Links
@@ -276,7 +273,7 @@ body {
   align-items: baseline;
   gap: 0.45em;
   font-size: 1rem;
-  font-variation-settings: 'wdth' 112, 'wght' 650;
+  font-weight: 700;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   color: var(--ink);
@@ -486,7 +483,9 @@ body {
 .sec--tan,
 .sec--deep { border-top: 0; }
 
-.sec--tan { background: var(--paper-sunk); }
+/* The homepage is one cream surface, so the "tan" band stays cream too and
+   is marked off by a hairline instead of a second colour. */
+.sec--tan { background: var(--paper); border-top: 1px solid var(--rule); }
 
 /* Inverted band. Rather than writing a second set of component rules for
    dark backgrounds, re-point the tokens: every descendant already reads
@@ -496,19 +495,19 @@ body {
    a cream button. */
 .sec--deep,
 .foot {
-  --ink:          #f2f0e2;
-  --ink-70:       rgba(242, 240, 226, 0.76);
-  --ink-45:       rgba(242, 240, 226, 0.66);
-  --ink-25:       rgba(242, 240, 226, 0.32);
-  --rule:         rgba(242, 240, 226, 0.22);
-  --rule-faint:   rgba(242, 240, 226, 0.1);
-  --accent:       #f2f0e2;
-  --accent-deep:  #ffffff;
-  --paper:        #2e2c22;
-  --paper-raise:  #383529;
-  --paper-sunk:   #3b382c;
-  --lift:    0 1px 1px rgba(0, 0, 0, 0.16), 0 10px 28px -14px rgba(0, 0, 0, 0.5);
-  --lift-hi: 0 2px 3px rgba(0, 0, 0, 0.2), 0 22px 46px -18px rgba(0, 0, 0, 0.6);
+  --ink:          #f2eee5;
+  --ink-70:       rgba(242, 238, 229, 0.82);
+  --ink-45:       #b9b3a6;
+  --ink-25:       rgba(242, 238, 229, 0.32);
+  --rule:         rgba(242, 238, 229, 0.22);
+  --rule-faint:   rgba(242, 238, 229, 0.12);
+  --accent:       #d63a1f;
+  --accent-deep:  #e8553a;
+  --paper:        #151513;
+  --paper-raise:  #151513;
+  --paper-sunk:   #1d1d1a;
+  --lift:    none;
+  --lift-hi: none;
   background: var(--paper-deep);
   color: var(--ink);
 }
@@ -530,7 +529,7 @@ body {
 
 .sec__title {
   font-size: clamp(1.3125rem, 1rem + 1.35vw, 1.9375rem);
-  font-variation-settings: 'wdth' 108, 'wght' 620;
+  font-weight: 700;
   line-height: 1.02;
   letter-spacing: -0.03em;
   text-transform: uppercase;
@@ -570,7 +569,7 @@ body {
    on the first screen and it read as a logo rather than a masthead. */
 .hero__name {
   font-size: clamp(2rem, 6vw, 4.75rem);
-  font-variation-settings: 'wdth' 116, 'wght' 660;
+  font-weight: 800;
   line-height: 0.88;
   letter-spacing: -0.035em;
   text-transform: uppercase;
@@ -710,7 +709,7 @@ body {
 
 .reach__value {
   font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
-  font-variation-settings: 'wdth' 100, 'wght' 550;
+  font-weight: 500;
   letter-spacing: -0.015em;
   line-height: 1.3;
   overflow-wrap: anywhere;
@@ -868,7 +867,7 @@ body {
 .spec__value { font-size: clamp(0.9375rem, 0.9rem + 0.25vw, 1.0625rem); }
 
 .spec__value strong {
-  font-variation-settings: 'wdth' 104, 'wght' 620;
+  font-weight: 700;
   letter-spacing: -0.01em;
 }
 
@@ -909,7 +908,7 @@ body {
 
 .entry__org {
   font-size: clamp(1.1875rem, 1rem + 0.85vw, 1.625rem);
-  font-variation-settings: 'wdth' 106, 'wght' 630;
+  font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.025em;
   text-transform: uppercase;
@@ -951,7 +950,7 @@ body {
 
 .receipt__figure {
   font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
-  font-variation-settings: 'wdth' 100, 'wght' 600;
+  font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
   color: var(--accent);
@@ -968,7 +967,8 @@ body {
   max-width: 56ch;
 }
 
-.lesson h3 {
+.lesson h3,
+.lesson h4 {
   font-family: var(--mono);
   font-size: 0.75rem;
   font-weight: 400;
@@ -1323,7 +1323,7 @@ a.panel { color: inherit; text-decoration: none; }
 .panel__org {
   margin-top: calc(var(--beat) * 1.5);
   font-size: clamp(1.125rem, 0.98rem + 0.6vw, 1.3125rem);
-  font-variation-settings: 'wdth' 104, 'wght' 620;
+  font-weight: 700;
   line-height: 1.06;
   letter-spacing: -0.022em;
   text-transform: uppercase;
@@ -1378,7 +1378,7 @@ a.panel:focus-visible .panel__org { color: var(--accent); }
   flex: none;
   min-width: 4ch;
   color: var(--accent);
-  font-variation-settings: 'wdth' 100, 'wght' 620;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1438,6 +1438,545 @@ a:focus-visible .shot img,
   padding: calc(var(--beat) * 1.25) calc(var(--beat) * 1.5);
   border-top: 1px solid var(--rule);
   background: var(--paper-raise);
+}
+
+/* --------------------------------------------------------------------------
+   17b. Work tabs — Product / Marketing
+   The tab bar is hidden in the markup and revealed by nav.js, so without JS
+   both lists simply stack, each under its own small heading.
+   -------------------------------------------------------------------------- */
+.tabs {
+  display: flex;
+  gap: calc(var(--beat) * 1);
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  border-bottom: 1px solid var(--rule);
+}
+
+.tabs[hidden] { display: none; }
+
+.tabs__tab {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  padding: calc(var(--beat) * 1.5) calc(var(--beat) * 2) calc(var(--beat) * 1.5) 0;
+  margin-right: calc(var(--beat) * 2);
+  font: inherit;
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6em;
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.tabs__tab:hover { color: var(--ink); }
+
+.tabs__tab[aria-selected='true'] {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+.tabs__tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+.tabpanel[hidden] { display: none; }
+
+.tabpanel + .tabpanel { margin-top: clamp(2.5rem, 5vw, 4rem); }
+
+.tabpanel__title { margin-bottom: calc(var(--beat) * 2); }
+
+/* With JS the tab already names the list, so the heading would repeat it. */
+.js-tabs .tabpanel__title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.js-tabs .tabpanel + .tabpanel { margin-top: 0; }
+
+/* The featured project spans both columns as two balanced rows: screenshot
+   beside the intro, then the numbers beside the takeaway. Stacked as one
+   tall text column it left a hole under the image. */
+.entry--wide .feature__intro .actions { margin-top: calc(var(--beat) * 3); }
+
+@media (min-width: 920px) {
+  .entry--wide { grid-column: 1 / -1; }
+  .entry--wide .projbody {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    grid-template-areas:
+      'shot   intro'
+      'stats  lesson';
+    column-gap: clamp(1.75rem, 3.5vw, 3rem);
+    row-gap: clamp(1.75rem, 3vw, 2.5rem);
+  }
+  .entry--wide .shot { grid-area: shot; }
+  .entry--wide .shot img { aspect-ratio: 16 / 9; }
+  .entry--wide .feature__intro { grid-area: intro; align-self: center; }
+  .entry--wide .receipts {
+    grid-area: stats;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 0;
+  }
+  .entry--wide .lesson {
+    grid-area: lesson;
+    margin-top: 0;
+    align-self: start;
+  }
+}
+
+/* Logos keep their colour: the desaturation is for screenshots, and a brand
+   mark in the wrong colour is a different brand. */
+.shot--logo img { filter: none; }
+
+/* Marketing cards: a short banner instead of a 3:2 frame, so the numbers
+   under each card sit above the fold. Logos on a flat colour are shown whole
+   on that colour rather than cropped to fill. */
+#marketing .shot img,
+#marketing .shot--type { aspect-ratio: 12 / 5; }
+
+.shot--fit { background: var(--logo-bg, var(--paper-sunk)); }
+.shot--fit img { object-fit: contain; }
+
+/* Numbers inside a project card always sit on one row, however many there
+   are: equal columns instead of a wrapping flex row. */
+.projbody .receipts {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  column-gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.projbody .receipt__figure {
+  font-size: clamp(1.125rem, 0.95rem + 0.8vw, 1.625rem);
+  white-space: nowrap;
+}
+
+/* A typeset stand-in where there is no artwork. */
+.shot--type {
+  aspect-ratio: 3 / 2;
+  display: grid;
+  place-items: center;
+  background: var(--paper-deep);
+  color: #f2f0e2;
+}
+
+.shot--type span {
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  text-transform: lowercase;
+}
+
+/* --------------------------------------------------------------------------
+   19. Theme, matched to the homepage
+   Cream paper, near-black ink, one red accent. Heavy Helvetica set in
+   sentence case and tracked tight, mono for every label, hairline ink rules,
+   and cards drawn with a 1px ink border instead of a shadow.
+   -------------------------------------------------------------------------- */
+.bar { border-bottom-color: var(--ink); }
+
+.wordmark {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+}
+
+.hero__name {
+  font-size: clamp(3rem, 9vw, 7.75rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  text-transform: none;
+}
+
+.hero__name--sm { font-size: clamp(2.75rem, 7vw, 5.75rem); line-height: 0.9; }
+.hero__name--sm span:last-child { margin-left: 0; }
+
+.sec__head {
+  padding-bottom: calc(var(--beat) * 1.75);
+  border-bottom: 1px solid var(--ink);
+}
+
+.sec__title {
+  font-size: clamp(1.625rem, 1.1rem + 2vw, 2.375rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  text-transform: none;
+}
+
+.entry__org,
+.panel__org,
+.tabs__tab {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+.entry__org { font-size: clamp(1.375rem, 1.1rem + 1vw, 1.75rem); }
+
+.tabs { border-bottom-color: var(--ink); }
+
+.entry,
+.panel,
+.viewer {
+  background: transparent;
+  border: 1px solid var(--ink);
+  box-shadow: none;
+}
+
+.panel:hover,
+.panel:focus-visible { box-shadow: none; border-color: var(--accent); }
+
+.shot { border-color: var(--ink); }
+.panel .shot { border-color: var(--ink); }
+
+.receipt__figure,
+.panel__stat b { color: var(--accent); }
+
+.btn { border-radius: 2px; }
+.btn--solid,
+.btn--solid:hover,
+.btn--solid:focus-visible { color: #fff; }
+
+/* --------------------------------------------------------------------------
+   20. Homepage
+   Ported from the "Davina Y.L. Li" page: one paper surface, sections divided
+   by an ink rule under each heading, red reserved for the lead numbers.
+   -------------------------------------------------------------------------- */
+.home .shell { padding-bottom: clamp(3rem, 6vw, 4.5rem); }
+.home .meta.r { color: var(--accent); }
+
+.h-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: end;
+  padding-block: clamp(2.5rem, 5vw, 3.25rem) clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.h-hero__name {
+  font-size: clamp(3.25rem, 9vw, 7.25rem);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 0.88;
+}
+
+.h-hero__lede {
+  margin-top: 1.375rem;
+  max-width: 36ch;
+  font-size: clamp(1.125rem, 1.9vw, 1.375rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.h-hero__lede em { font-style: normal; color: var(--accent); }
+
+.h-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.25rem; }
+
+.h-tag,
+.h-chip {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+}
+
+.h-tag--r { border-color: var(--accent); color: var(--accent); }
+
+.h-chip {
+  letter-spacing: 0.04em;
+  text-transform: none;
+  border-color: var(--rule);
+  background: var(--paper-sunk);
+}
+
+.h-chip.r { border-color: var(--accent); color: var(--accent); background: transparent; }
+
+.h-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+}
+
+.h-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 1.25rem 1rem 1.375rem;
+  text-align: center;
+}
+
+.h-stat span { max-width: 24ch; }
+.h-stat + .h-stat { border-left: 1px solid var(--rule); }
+
+@media (max-width: 760px) {
+  .h-stats { grid-template-columns: 1fr 1fr; }
+  .h-stat:nth-child(odd) { border-left: 0; }
+  .h-stat:nth-child(n+3) { border-top: 1px solid var(--rule); }
+}
+
+.h-stat b {
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.h-stat b.r { color: var(--accent); }
+.h-stat span { font-size: 0.84rem; line-height: 1.3; color: var(--ink-45); }
+
+/* Headshot: a framed print, held to the hero's height so the name stays
+   the loudest thing on the page. */
+.h-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 20rem); }
+
+.h-portrait { margin: 0; }
+.h-portrait img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 20%;
+  border: 1px solid var(--ink);
+}
+.h-portrait figcaption {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+
+@media (max-width: 860px) {
+  .h-hero { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .h-portrait { max-width: 18rem; }
+}
+
+.h-sec { padding-top: clamp(2.75rem, 5vw, 3.75rem); }
+
+.h-sh {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: 1.375rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+.h-sh h2 {
+  font-size: clamp(1.625rem, 3.4vw, 2.375rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+.h-sh__end { display: inline-flex; gap: 1.25rem; align-items: baseline; }
+.h-sh__link { color: var(--ink); text-decoration: none; }
+.h-sh__link:hover { color: var(--accent); }
+
+/* What I bring */
+.h-bring { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.h-bring > div { display: flex; flex-direction: column; gap: 0.75rem; padding: 4px 1.375rem 6px 0; }
+.h-bring > div + div { padding-left: 1.375rem; border-left: 1px solid var(--rule); }
+.h-bring h3 { font-size: 1.4375rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.h-bring ul { display: grid; gap: 9px; }
+.h-bring li { position: relative; padding-left: 16px; font-size: 0.906rem; line-height: 1.4; }
+.h-bring li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  background: var(--ink);
+}
+.h-bring .v li::before { background: var(--accent); }
+.h-bring b { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 860px) {
+  .h-bring { grid-template-columns: minmax(0, 1fr); }
+  .h-bring > div { padding: 1rem 0; }
+  .h-bring > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); }
+}
+
+/* Featured project */
+.h-feat {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 2.5rem;
+  align-items: center;
+  padding: 2rem;
+  background: #151513;
+  color: #f2eee5;
+}
+
+.h-feat .meta { color: #cfc9bc; }
+.h-feat h3 {
+  margin: 10px 0 14px;
+  font-size: clamp(1.875rem, 3.8vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+.h-feat p { max-width: 44ch; color: #e4ded2; line-height: 1.45; }
+.h-feat__ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.375rem; }
+
+.h-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+}
+
+.h-cta:hover { background: #fff; border-color: #fff; color: #151513; }
+.h-cta--ghost { background: transparent; border-color: #f2eee5; color: #f2eee5; }
+
+.h-ba { display: flex; flex-direction: column; gap: 12px; }
+.h-ba__row { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; align-items: center; }
+.h-ba__track { position: relative; height: 40px; }
+.h-ba__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10px;
+  font-size: 1.1875rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.h-ba__fill.before { width: 100%; background: #f2eee5; color: #151513; }
+.h-ba__fill.after { width: 16.6%; min-width: 70px; background: var(--accent); color: #fff; }
+.h-ba__fill.pace {
+  width: 100%;
+  justify-content: flex-start;
+  border: 1.5px solid #f2eee5;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  white-space: normal;
+  line-height: 1.2;
+}
+.h-ba__note { font-size: 0.78rem; color: #b9b3a6; }
+
+@media (max-width: 860px) {
+  .h-feat { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; padding: 1.5rem; }
+}
+
+/* Things I've started */
+.h-vent { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.h-vc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 1.125rem;
+  border: 1px solid var(--ink);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.25s var(--ease);
+}
+.h-vc:hover,
+.h-vc:focus-visible { border-color: var(--accent); }
+.h-vc h3 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.015em; }
+.h-vc__big {
+  margin-top: 4px;
+  font-size: 2.375rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.h-vc__bl { margin-top: -2px; font-size: 0.8125rem; color: var(--ink-45); }
+.h-vc p {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 860px) {
+  .h-vent { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Toolkit */
+.h-kit { display: grid; grid-template-columns: 150px minmax(0, 1fr); }
+.h-kit > .meta {
+  display: flex;
+  align-items: center;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--rule);
+}
+.h-kit > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+
+@media (max-width: 600px) {
+  .h-kit { grid-template-columns: minmax(0, 1fr); }
+  .h-kit > .meta { padding-bottom: 4px; border-bottom: 0; }
+}
+
+/* Experience slider: the section heading already draws the ink rule. */
+.h-sec .carousel__track { border-top: 0; padding-top: 0; }
+.h-sh .carousel__ctrl { display: inline-flex; align-items: center; gap: 8px; }
+.h-sh .carousel__ctrl[hidden] { display: none; }
+
+/* Close */
+.h-close {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 1.75rem;
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ink);
+}
+.h-close h2 { font-size: 1.625rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; }
+.h-close p { margin-top: 8px; font-size: 0.906rem; color: var(--ink-45); }
+.h-contact { display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+.h-contact a {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 10px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.9375rem;
+  color: inherit;
+  text-decoration: none;
+}
+.h-contact a:hover { color: var(--accent); }
+
+@media (max-width: 760px) {
+  .h-close { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* --------------------------------------------------------------------------
