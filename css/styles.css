@@ -1760,6 +1760,8 @@ a:focus-visible .shot img,
 }
 .h-portrait figcaption {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0 1rem;
   justify-content: space-between;
   padding-top: 8px;
 }
