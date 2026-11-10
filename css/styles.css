@@ -1682,6 +1682,14 @@ a:focus-visible .shot img,
 
 .h-hero__lede em { font-style: normal; color: var(--accent); }
 
+.h-hero__more {
+  margin-top: 0.875rem;
+  max-width: 52ch;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink-45);
+}
+
 .h-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.25rem; }
 
 .h-tag,
