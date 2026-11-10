@@ -2003,6 +2003,97 @@ a:focus-visible .shot img,
 }
 
 /* --------------------------------------------------------------------------
+   21. Breakdown pages (work/*.html)
+   Rebuilt from the old Canva pages in the site's own brand: the same hero,
+   metrics row and ink-ruled section heads as the homepage, with galleries for
+   posts, reels, print pieces and photography.
+   -------------------------------------------------------------------------- */
+.cs { padding-bottom: clamp(3rem, 6vw, 4.5rem); }
+
+.cs-hero { padding-block: clamp(2.25rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem); }
+.cs-hero .hero__eyebrow { margin-bottom: 1rem; }
+.cs-hero h1 {
+  font-size: clamp(2.5rem, 6.5vw, 5.25rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.92;
+}
+.cs-hero__lede {
+  margin-top: 1.125rem;
+  max-width: 60ch;
+  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  line-height: 1.45;
+}
+.cs-hero__lede em { font-style: normal; color: var(--accent); }
+
+.cs-cover {
+  margin: clamp(1.5rem, 3vw, 2rem) 0 0;
+  border: 1px solid var(--ink);
+  overflow: hidden;
+}
+.cs-cover img { width: 100%; aspect-ratio: 21 / 8; object-fit: cover; }
+
+.cs-note { max-width: 64ch; margin-bottom: 1.25rem; font-size: 0.9375rem; line-height: 1.6; color: var(--ink-70); }
+.cs-note + .cs-note { margin-top: -0.5rem; }
+
+.cs-sub { margin: 2rem 0 0.875rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: baseline; }
+.cs-sub h3 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.015em; }
+
+.cs-grid { display: grid; gap: 12px; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); }
+.cs-grid figure { margin: 0; }
+.cs-grid img,
+.cs-grid video {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--ink);
+  background: var(--paper-sunk);
+}
+.cs-grid--square img { aspect-ratio: 1; object-fit: cover; }
+.cs-grid--tall img { aspect-ratio: 9 / 16; object-fit: cover; }
+.cs-grid figcaption { margin-top: 6px; }
+
+.cs-reels { --cols: 4; }
+.cs-reels video { aspect-ratio: 9 / 16; object-fit: cover; border-radius: 14px; border-width: 2px; background: #151513; }
+
+.cs-photos { columns: 4 220px; column-gap: 12px; }
+.cs-photos img { width: 100%; margin-bottom: 12px; border: 1px solid var(--ink); break-inside: avoid; }
+
+.cs-callout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.25rem 2rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--rule);
+}
+.cs-callout h3 { font-size: 1.125rem; font-weight: 700; letter-spacing: -0.01em; }
+.cs-callout p { margin-top: 4px; font-size: 0.9375rem; color: var(--ink-70); line-height: 1.5; }
+
+.cs-embed { position: relative; border: 1px solid var(--ink); background: var(--paper-sunk); }
+.cs-embed iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
+.cs-embed + .cs-embed { margin-top: 14px; }
+.cs-embeds { display: grid; gap: 14px; grid-template-columns: repeat(var(--cols, 1), minmax(0, 1fr)); }
+
+.cs-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: 2rem;
+  align-items: start;
+}
+.cs-feature video,
+.cs-feature img { width: 100%; border: 1px solid var(--ink); }
+
+.cs-rights { margin-top: clamp(2.5rem, 5vw, 3.5rem); padding-top: 1rem; border-top: 1px solid var(--ink); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+.cs-rights a { color: var(--ink); text-decoration: none; }
+.cs-rights a:hover { color: var(--accent); }
+
+@media (max-width: 860px) {
+  .cs-grid { --cols: 2 !important; }
+  .cs-callout,
+  .cs-feature,
+  .cs-embeds { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* --------------------------------------------------------------------------
    18. Print
    -------------------------------------------------------------------------- */
 @media print {
