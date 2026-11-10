@@ -1744,7 +1744,11 @@ a:focus-visible .shot img,
 
 /* Headshot: a framed print, held to the hero's height so the name stays
    the loudest thing on the page. */
-.h-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 20rem); }
+/* Name sits at the top of the hero, level with the top of the photo. */
+.h-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 14rem);
+  align-items: start;
+}
 
 .h-portrait { margin: 0; }
 .h-portrait img {
