@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Davina Y.L. Li</title>
+<title>Davina Li</title>
 <meta name="description" content="Creator, brand builder and AI product person. I make short-form video and built an AI agent that edits my videos in my style.">
-<meta property="og:title" content="Davina Y.L. Li">
+<meta property="og:title" content="Davina Li">
 <meta property="og:description" content="Creator, brand builder and AI product person. I make short-form video and built an AI agent that edits my videos in my style.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://davina-li-01.github.io/">
@@ -38,21 +38,24 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .links{display:flex;gap:18px;flex-wrap:wrap}
 
 /* hero */
-.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:end;padding:52px 0 40px}
-.hero h1{font-size:clamp(56px,9.5vw,124px);font-weight:800;letter-spacing:-.055em;line-height:.88}
-.hero .lede{font-size:clamp(18px,1.9vw,22px);line-height:1.35;letter-spacing:-.01em;margin-top:22px;max-width:36ch}
+.hero{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:center;padding:48px 0 40px}
+.hero h1{font-size:clamp(64px,11vw,148px);font-weight:800;letter-spacing:-.055em;line-height:.86}
+.hero .lede{font-size:clamp(18px,1.9vw,22px);line-height:1.35;letter-spacing:-.01em;margin-top:24px;max-width:36ch}
 .hero .lede em{font-style:normal;color:var(--rec)}
 .roles{display:flex;gap:6px;flex-wrap:wrap;margin-top:20px}
 .tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--ink);border-radius:2px}
 .tag.r{border-color:var(--rec);color:var(--rec)}
-.stats{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink)}
-.stat{padding:16px 0 16px;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:4px}
-.stat:nth-child(odd){padding-right:16px}
-.stat:nth-child(even){padding-left:16px;border-left:1px solid var(--rule)}
+.portrait{margin:0 auto;display:flex;flex-direction:column;gap:8px;width:100%;max-width:340px}
+.portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 40%;border:1px solid var(--ink);background:var(--panel)}
+.portrait figcaption{display:flex;justify-content:space-between;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.stat{padding:20px 18px;border-left:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px}
+.stat:first-child{border-left:0}
 .stat b{font-size:clamp(28px,3.4vw,40px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
 .stat b.r{color:var(--rec)}
-.stat span{font-size:13.5px;color:var(--muted);line-height:1.3}
-@media (max-width:860px){.hero{grid-template-columns:1fr;gap:30px}}
+.stat span{font-size:13.5px;color:var(--muted);line-height:1.3;max-width:24ch}
+@media (max-width:860px){.hero{grid-template-columns:1fr;gap:28px}.portrait{margin:0;max-width:320px}}
+@media (max-width:720px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(3){border-left:0}.stat:nth-child(n+3){border-top:1px solid var(--rule)}}
 
 /* sections */
 section{padding:60px 0 0}
@@ -134,7 +137,7 @@ footer p{color:var(--muted);font-size:14.5px;margin-top:8px}
 
 <div class="wrap">
   <div class="topbar">
-    <span class="mono"><span class="dot" aria-hidden="true"></span>Davina Y.L. Li</span>
+    <span class="mono"><span class="dot" aria-hidden="true"></span>Davina Li</span>
     <span class="links mono">
       <a href="projects.html">More work</a>
       <a href="https://www.linkedin.com/in/davina-li/" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -144,7 +147,7 @@ footer p{color:var(--muted);font-size:14.5px;margin-top:8px}
 
   <header class="hero">
     <div>
-      <h1>Davina<br>Y.L. Li</h1>
+      <h1>Davina<br>Li</h1>
       <p class="lede">I make short-form video, build brands from zero, and <em>built an AI agent that edits my videos in my style.</em></p>
       <div class="roles">
         <span class="tag r">Creator</span>
@@ -153,13 +156,18 @@ footer p{color:var(--muted);font-size:14.5px;margin-top:8px}
         <span class="tag">Babson '27</span>
       </div>
     </div>
-    <div class="stats" aria-label="Highlights">
+    <figure class="portrait">
+      <img src="images/davina-li-portrait.jpg" alt="Davina Li" width="1000" height="1500">
+      <figcaption class="mono"><span>Fig. 01</span><span>Boston, MA</span></figcaption>
+    </figure>
+  </header>
+
+  <div class="stats" aria-label="Highlights">
       <div class="stat"><b class="r">1M+</b><span>views from a 5-month social growth plan I ran</span></div>
       <div class="stat"><b>4.5 yrs</b><span>marketing and brand work, from nonprofits to startups</span></div>
       <div class="stat"><b class="r">180→&lt;30</b><span>minutes of editing per video, with my agent</span></div>
       <div class="stat"><b>3×</b><span>more reels posted per month since the agent</span></div>
     </div>
-  </header>
 </div>
 
 <main class="wrap">
